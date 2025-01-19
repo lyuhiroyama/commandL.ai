@@ -1,0 +1,6 @@
+{
+    "name": "lyuhiroyama/command-l.ai",
+    "require": {
+        "vlucas/phpdotenv": "^5.6"
+    }
+}
