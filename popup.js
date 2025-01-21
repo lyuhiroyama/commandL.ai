@@ -14,7 +14,7 @@ $(document).ready(function () {
       chatHistory.push({role: "user", content: input});
 
       $.post(
-        "http://localhost/CommandL-AI-XAMPP/CommandL-AI/openai-proxy.php", 
+        "http://localhost/commandL.ai/openai-proxy.php", // For testing on local: 'openai-proxy.php'. Eventually to Apache on a server to render php script?
         JSON.stringify({
           messages: chatHistory,
         })
