@@ -5,5 +5,5 @@
 <br>
 
 <body>
-  <img src="README-sc.png">
+  <img src="README-sc-rui.png">
 </body>
