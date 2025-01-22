@@ -44,8 +44,12 @@ $(document).ready(function () {
           */
           let messageContent = parsedResponse.choices[0].message.content;
 
-          // OpenAI API returns response in markdown-style. Convert it to HTML to render **text** as <b>text</b>
+          // OpenAI API returns response in markdown-style. Convert it to HTML to render line breaks & headings
           messageContent = messageContent.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+          messageContent = messageContent.replace(/### (.*?)\n/g, '<h3>$1</h3>');
+
+          // Convert code blocks from markdown to HTML
+          messageContent = messageContent.replace(/```([^`]+)```/g, '<div class="code-block"><code>$1</code></div>');
 
           chatDiv.append(`<div class="ai-chat">${messageContent}</div>`);
 
