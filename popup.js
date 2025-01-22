@@ -49,7 +49,7 @@ $(document).ready(function () {
           messageContent = messageContent.replace(/### (.*?)\n/g, '<h3>$1</h3>');
 
           // Convert code blocks from markdown to HTML
-          messageContent = messageContent.replace(/```([^`]+)```/g, '<div class="code-block"><code>$1</code></div>');
+          messageContent = messageContent.replace(/```(\w+)\n([^`]+)```/g, '<div class="language-title">$1</div><div class="code-block"><code>$2</code></div>');
 
           chatDiv.append(`<div class="ai-chat">${messageContent}</div>`);
 
