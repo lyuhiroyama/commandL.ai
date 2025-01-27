@@ -115,9 +115,40 @@
       div {
         color: white;
       }
+
+      #settings-header {
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+      }
+
+      #settings-header #back-button {
+        background-color: transparent;
+        height: 66%;
+      }
+
+      #settings-header #back-button #back-png {
+        width: 25px;
+        height: auto;
+      }
+
+      #settings-header #settings-header-text {
+        font-size: 20px;
+        font-family: monospace, serif;
+        margin: 10px;
+      }
+
+      #settings-div #settings-body {
+        display: flex;
+        flex-direction: column;
+        background-color: blue;
+      }
     </style>
   </head>
   <body>
+
+    <!-- Main page: -->
+
     <div id="header-div">
       <div id="header-text">CommandL.ai</div>
       <button id="settings-button"><img id="settings-png" src="settings-icon.png"></button>
@@ -128,7 +159,23 @@
       <button id="send-button"><img id="send-png" src="send-icon.png"></button>
     </div>
 
-    <script defer src="jquery-3.7.1.min.js"></script>
-    <script defer src="popup.js"></script>
+    <!-- Settings page: -->
+    <div id="settings-div" style="display: none;">
+      <div id="settings-header">
+        <button id="back-button"><img id="back-png" src="back-icon.png"></button>
+        <div id="settings-header-text">Settings</div>
+      </div>
+      <div id="settings-body">
+        <br>
+        <label>Width: </label>
+        <input type="number" id="width-input">
+        <label>Height: </label>
+        <input type="number" id="height-input">
+        <button id="apply-resize-button">Apply</button>
+      </div>
+    </div>
+
+      <script defer src="jquery-3.7.1.min.js"></script>
+      <script defer src="popup.js"></script>
   </body>
 </html>

@@ -75,6 +75,24 @@ $(document).ready(function () {
       sendMessage();
     }
   });
+
+  // Display settings page when settings-button is clicked
+  $('#settings-button').click(function() {
+    $('#header-div').hide();
+    $('#chat-div').hide();
+    $('#input-container').hide();
+    $("#settings-div").show();
+  })
+
+  // Return to main page when back-button is clicked
+  $('#back-button').click(function() {
+    $('#settings-div').hide();
+    $('#header-div').show()
+    $("#chat-div").show();
+    $("#input-container").show();
+  })
+
+
 });
 
 
