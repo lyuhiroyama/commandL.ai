@@ -92,6 +92,39 @@ $(document).ready(function () {
     $("#input-container").show();
   })
 
+  // Window resize functionality
+  $('#apply-resize-button').click(function() {
+    const width = $('#width-input').val();
+    const height = $('#height-input').val();
+
+    // Save user window-resize to chrome.storage (API)
+    chrome.storage.local.set({
+      'popup_width' : width,
+      'popup_height' : height
+    }, function() {
+      $('html').css({
+        'width': width + 'px',
+        'height': height + 'px'
+      });
+    });
+  });
+
+  // Load saved dimensions (on load)
+  chrome.storage.local.get(['popup_width', 'popup_height'], function(result) {
+    const width = result.popup_width || 350;
+    const height = result.popup_height || 570;
+
+    // Add preferences stored in chrome.stored into #settings-body input fields
+    $('#width-input').val(width);
+    $('#height-input').val(height);
+
+    // Set html styles values
+    $('html').css({
+      'width': width + 'px',
+      'height': height + 'px'
+    });
+  });
+
 
 });
 
