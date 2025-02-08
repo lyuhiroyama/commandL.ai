@@ -11,7 +11,7 @@
       }
       html {
         width: 360px;
-        height: 570px;
+        height: 560px;
       }
       body {
         display: flex;
@@ -190,11 +190,11 @@
       <div id="settings-body">
         <div id="width-input-container">
           <label>Width:</label>
-          <input type="number" id="width-input" value="360">
+          <input type="number" id="width-input" min="360" max="800" value="360">
         </div>
         <div id="height-input-container">
           <label>Height:</label>
-          <input type="number" id="height-input" value="570">
+          <input type="number" id="height-input" min="560" max="600" value="570">
         </div>
         <button id="apply-resize-button">Apply</button>
       </div>

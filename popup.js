@@ -94,8 +94,16 @@ $(document).ready(function () {
 
   // Window resize functionality
   $('#apply-resize-button').click(function() {
-    const width = $('#width-input').val();
-    const height = $('#height-input').val();
+    let width = parseInt($('#width-input').val());
+    let height = parseInt($('#height-input').val());
+
+    // Enforce window size limits
+    width = Math.min(Math.max(width, 360), 800);
+    height = Math.min(Math.max(height, 560), 600);
+
+    // Correct sizes displayed in input field
+    $('#width-input').val(width);
+    $('#height-input').val(height);
 
     // Save user window-resize to chrome.storage (API)
     chrome.storage.local.set({
