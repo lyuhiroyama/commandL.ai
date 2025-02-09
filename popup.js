@@ -98,20 +98,31 @@ $(document).ready(function () {
     $("#input-container").show();
   })
 
+  // Load saved dimensions (on load)
+  chrome.storage.local.get(['popup_width', 'popup_height'], function(result) {
+    const width = result.popup_width || 360;
+    const height = result.popup_height || 560;
+    // Add preferences stored in chrome.stored into #settings-body input fields
+    $('#width-input').val(width);
+    $('#height-input').val(height);
+    // Set html styles values
+    $('html').css({
+      'width': width + 'px',
+      'height': height + 'px'
+    });
+  });
+
   // Window resize functionality
   $('#apply-resize-button').click(function() {
     let width = parseInt($('#width-input').val());
     let height = parseInt($('#height-input').val());
-
     // Enforce window size limits
     width = Math.min(Math.max(width, 360), 800);
     height = Math.min(Math.max(height, 560), 600);
-
     // Correct sizes displayed in input field
     $('#width-input').val(width);
     $('#height-input').val(height);
-
-    // Save user window-resize to chrome.storage (API)
+    // Save preferences to chrome.storage (API)・update window size
     chrome.storage.local.set({
       'popup_width' : width,
       'popup_height' : height
@@ -123,21 +134,24 @@ $(document).ready(function () {
     });
   });
 
-  // Load saved dimensions (on load)
-  chrome.storage.local.get(['popup_width', 'popup_height'], function(result) {
-    const width = result.popup_width || 350;
-    const height = result.popup_height || 570;
-
-    // Add preferences stored in chrome.stored into #settings-body input fields
-    $('#width-input').val(width);
-    $('#height-input').val(height);
-
-    // Set html styles values
-    $('html').css({
-      'width': width + 'px',
-      'height': height + 'px'
+  // 'set default' feature (for window size)
+  const defaultWidth = 360;
+  const defaultHeight = 560;
+  $('#default-resize-button').click(function() {
+    // Correct sizes displayed in input field
+    $('#width-input').val(defaultWidth);
+    $('#height-input').val(defaultHeight);
+    // Save default sizes to chrome.storage・update window size 
+    chrome.storage.local.set({
+      'popup_width' : defaultWidth,
+      'popup_height' : defaultHeight
+    }, function() {
+      $('html').css({
+        'width': defaultWidth + 'px',
+        'height': defaultHeight + 'px'
+      });
     });
-  });
+  })
 
 
 });
