@@ -11,6 +11,7 @@ $(document).ready(function () {
 
     if ($.trim(input) !== "") {
       chatDiv.append(`<div class="user-chat">${formattedInput}</div>`);
+      chatDiv.scrollTop(chatDiv[0].scrollHeight);
       chatHistory.push({role: "user", content: input});
 
       $.post(
@@ -51,7 +52,12 @@ $(document).ready(function () {
           // Convert code blocks from markdown to HTML
           messageContent = messageContent.replace(/```(\w+)\n([^`]+)```/g, '<div class="language-title">$1</div><div class="code-block"><code>$2</code></div>');
 
-          chatDiv.append(`<div class="ai-chat">${messageContent}</div>`);
+          chatDiv.append(`<div class="ai-chat">⭐️ ${messageContent}</div>`);
+          setTimeout(() => { // for autoscroll after receiving response
+            const lastMessage = chatDiv.children().last()[0];
+            const messageTop = lastMessage.offsetTop;
+            chatDiv.scrollTop(messageTop - 150);
+          }, 100);
 
           chatHistory.push({role: "assistant", content: messageContent});
           console.log(chatHistory);

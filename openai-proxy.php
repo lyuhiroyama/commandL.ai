@@ -36,7 +36,7 @@ curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 curl_setopt($ch, CURLOPT_POST, true);
 // CURLOPT_POSTFIELDS: Set POST fields for a cURL request.
 curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode([
-    'model' => 'gpt-4o-mini',
+    'model' => 'gpt-4o',
     'messages' => $data['messages'],
     'max_tokens' => 500
 ]));
