@@ -1,8 +1,8 @@
 # commandL.ai
 
-開発中! 
+Currently under development, functional locally!
 
-デモンストレーション動画： https://www.youtube.com/watch?v=-w3hiKZFUD4
+Demo video： https://www.youtube.com/watch?v=-w3hiKZFUD4
 
 <br>
 
