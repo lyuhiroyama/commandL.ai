@@ -1,6 +1,6 @@
 # commandL.ai
 
-Currently under development, functional locally!
+(Archived project)
 
 Demo video： https://www.youtube.com/watch?v=-w3hiKZFUD4
 
